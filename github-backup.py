@@ -60,7 +60,7 @@ def main():
       repos = gh.repos.list(args.username).all()
 
    for repo in repos:
-      clone(repo.ssh_url, os.path.join(args.backupdir, repo.name), name=repo.full_name, mirror=args.mirror)
+      clone(repo.ssh_url, os.path.join(args.backupdir, repo.name), name=repo.full_name, quiet=args.cron, mirror=args.mirror)
 
    for gist in gh.gists.list(args.username).all():
       clone(gist.git_pull_url, os.path.join(args.gistsdir, gist.id), quiet=args.cron, mirror=args.mirror)
